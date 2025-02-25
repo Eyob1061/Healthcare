@@ -112,7 +112,13 @@ function App() {
   return (
     <Routes>
       {/* Public Routes */}
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={
+        user ? (
+          <Navigate to={`/dashboard/${user.role}`} replace />
+        ) : (
+          <Home />
+        )
+      } />
       <Route path="/login" element={<Login />} />
 
       {/* Protected Routes */}
@@ -135,9 +141,9 @@ function App() {
                 <Route path="feedback" element={<Feedback />} />
               </Routes>
             } />
+            <Route path="physician" element={<PhysicianDashboard />} />
             <Route path="physician/*" element={
               <Routes>
-                <Route index element={<PhysicianDashboard />} />
                 <Route path="generate-report" element={<GenerateReport />} />
                 <Route path="insert-advice" element={<InsertAdvice />} />
                 <Route path="approve-recommendations" element={<ApproveRecommendations />} />
@@ -157,29 +163,14 @@ function App() {
         </ProtectedRoute>
       } />
 
-      {/* Default route - redirects based on user role or to login if no user */}
-      <Route
-        path="/"
-        element={
-          user ? (
-            <Navigate to={`/dashboard/${user.role}`} replace />
-          ) : (
-            <Navigate to="/login" replace />
-          )
-        }
-      />
-
       {/* Catch all route */}
-      <Route
-        path="*"
-        element={
-          user ? (
-            <Navigate to={`/dashboard/${user.role}`} replace />
-          ) : (
-            <Navigate to="/login" replace />
-          )
-        }
-      />
+      <Route path="*" element={
+        user ? (
+          <Navigate to={`/dashboard/${user.role}`} replace />
+        ) : (
+          <Navigate to="/login" replace />
+        )
+      } />
     </Routes>
   );
 }

@@ -47,7 +47,7 @@ const DashboardLayout = ({ children, menuItems, title }) => {
       id: 1,
       type: 'user',
       title: 'New User Registration',
-      message: 'John Doe has registered as a new patient',
+      message: 'JNatan Derje has registered as a new patient',
       time: '5 mins ago',
       icon: <PersonIcon />
     },

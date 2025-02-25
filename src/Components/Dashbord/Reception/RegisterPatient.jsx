@@ -8,12 +8,9 @@ import {
   TextField,
   Button,
   FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  FormControlLabel,
   Radio,
   RadioGroup,
+  FormControlLabel,
 } from '@mui/material';
 import {
   Dashboard,
@@ -26,6 +23,7 @@ import DashboardLayout from '../DasboardLayout';
 const RegisterPatient = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
+    patientId: '',
     firstName: '',
     lastName: '',
     dateOfBirth: '',
@@ -59,10 +57,19 @@ const RegisterPatient = () => {
     }
   ];
 
+  function generatePatientId(firstName, lastName) {
+    const randomId = Math.floor(Math.random() * 1000000);
+    return `${firstName.charAt(0)}${lastName.charAt(0)}${randomId}`;
+  }
+
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
+    const { name, value } = e.target;
+    setFormData((prevFormData) => {
+      const updatedFormData = { ...prevFormData, [name]: value };
+      if (name === 'firstName' || name === 'lastName') {
+        updatedFormData.patientId = generatePatientId(updatedFormData.firstName, updatedFormData.lastName);
+      }
+      return updatedFormData;
     });
   };
 
@@ -82,6 +89,17 @@ const RegisterPatient = () => {
         <CardContent>
           <form onSubmit={handleSubmit}>
             <Grid container spacing={3}>
+              <Grid item xs={12} md={6}>
+                <TextField
+                  fullWidth
+                  label="Patient ID"
+                  name="patientId"
+                  value={formData.patientId}
+                  onChange={handleChange}
+                  disabled
+                />
+              </Grid>
+
               <Grid item xs={12} md={6}>
                 <TextField
                   fullWidth
@@ -222,4 +240,4 @@ const RegisterPatient = () => {
   );
 };
 
-export default RegisterPatient; 
+export default RegisterPatient;

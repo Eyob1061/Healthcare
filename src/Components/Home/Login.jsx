@@ -132,8 +132,8 @@ const Login = () => {
           case 'patient':
             navigate('/dashboard/patient', { replace: true });
             break;
-          case 'doctor':
-            navigate('/dashboard/doctor', { replace: true });
+          case 'physician':
+            navigate('/dashboard/physcian', { replace: true });
             break;
           case 'receptionist':
             navigate('/dashboard/receptionist', { replace: true });
