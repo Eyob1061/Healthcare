@@ -111,8 +111,19 @@ function App() {
 
   return (
     <Routes>
+<<<<<<< HEAD
       {/* Public Routes - Modified to always show Home on root path */}
       <Route path="/" element={<Home />} />
+=======
+      {/* Public Routes */}
+      <Route path="/" element={
+        user ? (
+          <Navigate to={`/dashboard/${user.role}`} replace />
+        ) : (
+          <Home />
+        )
+      } />
+>>>>>>> 9391ef03e70067cb9f5e63bd85e566c203c45142
       <Route path="/login" element={<Login />} />
 
       {/* Protected Routes */}
@@ -135,6 +146,7 @@ function App() {
                 <Route path="feedback" element={<Feedback />} />
               </Routes>
             } />
+<<<<<<< HEAD
             <Route path="physician" element={
               <ProtectedRoute>
                 <PhysicianDashboard />
@@ -151,6 +163,18 @@ function App() {
                   <Route path="update-patient" element={<UpdatePatient />} />
                 </Routes>
               </ProtectedRoute>
+=======
+            <Route path="physician" element={<PhysicianDashboard />} />
+            <Route path="physician/*" element={
+              <Routes>
+                <Route path="generate-report" element={<GenerateReport />} />
+                <Route path="insert-advice" element={<InsertAdvice />} />
+                <Route path="approve-recommendations" element={<ApproveRecommendations />} />
+                <Route path="view-patients" element={<ViewPatients />} />
+                <Route path="view-appointments" element={<ViewAppointments />} />
+                <Route path="update-patient" element={<UpdatePatient />} />
+              </Routes>
+>>>>>>> 9391ef03e70067cb9f5e63bd85e566c203c45142
             } />
             <Route path="receptionist/*" element={
               <Routes>
@@ -163,8 +187,19 @@ function App() {
         </ProtectedRoute>
       } />
 
+<<<<<<< HEAD
       {/* Catch all route - Modified to go to home instead of dashboard */}
       <Route path="*" element={<Navigate to="/" replace />} />
+=======
+      {/* Catch all route */}
+      <Route path="*" element={
+        user ? (
+          <Navigate to={`/dashboard/${user.role}`} replace />
+        ) : (
+          <Navigate to="/login" replace />
+        )
+      } />
+>>>>>>> 9391ef03e70067cb9f5e63bd85e566c203c45142
     </Routes>
   );
 }
