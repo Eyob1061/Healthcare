@@ -133,11 +133,7 @@ const Login = () => {
             navigate('/dashboard/patient', { replace: true });
             break;
           case 'physician':
-<<<<<<< HEAD
-            navigate('/dashboard/physician', { replace: true });
-=======
             navigate('/dashboard/physcian', { replace: true });
->>>>>>> 9391ef03e70067cb9f5e63bd85e566c203c45142
             break;
           case 'receptionist':
             navigate('/dashboard/receptionist', { replace: true });

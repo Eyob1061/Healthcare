@@ -7,32 +7,23 @@ export const userCredentials = {
     },
     patient: {
         email: 'patient@cnd.com',
-<<<<<<< HEAD
         password: 'p123',
-=======
         password: 'patient123',
->>>>>>> 9391ef03e70067cb9f5e63bd85e566c203c45142
         role: 'patient',
         permissions: ['view_records', 'book_appointments']
     },
     physician: {
         email: 'physician@cnd.com',
-<<<<<<< HEAD
         password: 'p123',
         role: 'physician',
-=======
         password: 'physician123',
         role: 'doctor',
->>>>>>> 9391ef03e70067cb9f5e63bd85e566c203c45142
         permissions: ['view_patients', 'manage_appointments']
     },
     receptionist: {
         email: 'receptionist@cnd.com',
-<<<<<<< HEAD
         password: 'r123',
-=======
         password: 'reception123',
->>>>>>> 9391ef03e70067cb9f5e63bd85e566c203c45142
         role: 'receptionist',
         permissions: ['manage_appointments', 'view_schedule']
     }
